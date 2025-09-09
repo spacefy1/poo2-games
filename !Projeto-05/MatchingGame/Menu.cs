@@ -12,8 +12,6 @@ namespace MatchingGame
 {
     public partial class Menu : Form
     {
-        private frmMain gameForm;
-
         public Menu()
         {
             InitializeComponent();
@@ -21,9 +19,18 @@ namespace MatchingGame
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gameForm = new frmMain();
-            gameForm.ShowDialog(); // Use ShowDialog() pois frmMain não herda de Form
-            this.Close();
+            frmMain f1 = new frmMain();
+
+            
+            this.Hide();
+
+            
+            f1.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

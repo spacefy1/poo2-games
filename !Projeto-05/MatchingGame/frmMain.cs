@@ -1,9 +1,9 @@
 namespace MatchingGame
 {
-    // Corrigido para 'public' para evitar conflito de modificadores de acessibilidade
-    public partial class FrmMain : Form
+    public partial class frmMain : Form
     {
-        Image[] pokemon = {
+
+            Image[] pokemon = {
             Properties.Resources.abra,
             Properties.Resources.articuno,
             Properties.Resources.bellsprout,
@@ -27,95 +27,83 @@ namespace MatchingGame
             Properties.Resources.weedle
         };
 
-        int[] index = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20 };
-        Button firstPokemon;
-        int firstIndex, found, movement;
-        private TableLayoutPanel tableLayoutPanel1;
+            int[] index = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20 };
+            Button firstPokemon;
+            int firstIndex, found, movement;
 
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            found = 0;
-            movement = 0;
-            tableLayoutPanel1.Enabled = true;
-            for (var i = 0; i < tableLayoutPanel1.Controls.Count; i++)
+            private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
             {
-                var button = (Button)tableLayoutPanel1.Controls[i];
-                button.Visible = true;
-            }
-            updateCards();
-        }
-
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            updateCards();
-        }
-
-        private void updateCards()
-        {
-            Random rnd = new Random();
-
-            for (int i = 0; i < 42; i++)
-            {
-                int number = rnd.Next(0, 21);
-                int temp = index[i];
-                index[i] = index[number];
-                index[number] = temp;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.Enabled = false;
-            int buttonNo = int.Parse(button.Name.Substring(6));
-            int indexNo = index[buttonNo - 1];
-            button.BackgroundImage = pokemon[indexNo];
-            button.Refresh();
-
-            if (firstPokemon == null)
-            {
-                firstPokemon = button;
-                firstIndex = indexNo;
-                movement++;
-            }
-            else
-            {
-                System.Threading.Thread.Sleep(1000);
-                firstPokemon.BackgroundImage = null;
-                button.BackgroundImage = null;
-                if (firstIndex == indexNo)
+                found = 0;
+                movement = 0;
+                tableLayoutPanel1.Enabled = true;
+                for (var i = 0; i < tableLayoutPanel1.Controls.Count; i++)
                 {
-                    found++;
-                    firstPokemon.Visible = false;
-                    button.Visible = false;
-
-                    if (found == 21)
-                    {
-                        MessageBox.Show("Parabéns! " + movement + " Você terminou a parada...");
-                        tableLayoutPanel1.Enabled = false;
-                    }
+                    var button = (Button)tableLayoutPanel1.Controls[i];
+                    button.Visible = true;
                 }
-                button.Enabled = true;
-                firstPokemon.Enabled = true;
-                firstPokemon = null;
+                updateCards();
+            }
+
+            private void frmMain_Load(object sender, EventArgs e)
+            {
+                updateCards();
+            }
+
+            private void updateCards()
+            {
+                Random rnd = new Random();
+
+                for (int i = 0; i < 42; i++)
+                {
+                    int number = rnd.Next(0, 21);
+                    int temp = index[i];
+                    index[i] = index[number];
+                    index[number] = temp;
+                }
+            }
+
+            private void button1_Click(object sender, EventArgs e)
+            {
+                Button button = (Button)sender;
+                button.Enabled = false;
+                int buttonNo = int.Parse(button.Name.Substring(6));
+                int indexNo = index[buttonNo - 1];
+                button.BackgroundImage = pokemon[indexNo];
+                button.Refresh();
+
+                if (firstPokemon == null)
+                {
+                    firstPokemon = button;
+                    firstIndex = indexNo;
+                    movement++;
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    firstPokemon.BackgroundImage = null;
+                    button.BackgroundImage = null;
+                    if (firstIndex == indexNo)
+                    {
+                        found++;
+                        firstPokemon.Visible = false;
+                        button.Visible = false;
+
+                        if (found == 21)
+                        {
+                            MessageBox.Show("Parabéns! " + movement + " Você terminou a parada...");
+                            tableLayoutPanel1.Enabled = false;
+                        }
+                    }
+                    button.Enabled = true;
+                    firstPokemon.Enabled = true;
+                    firstPokemon = null;
+                }
+            }
+
+            public frmMain()
+            {
+                InitializeComponent();
+                updateCards();
             }
         }
-
-        private void InitializeComponent()
-        {
-            // Normalmente, o designer do Visual Studio gera este método automaticamente.
-            // Se você não estiver usando o designer, inicialize seus controles manualmente aqui.
-        }
-
-        public FrmMain(TableLayoutPanel tableLayoutPanel1)
-        {
-            InitializeComponent();
-            updateCards();
-            this.tableLayoutPanel1 = tableLayoutPanel1;
-        }
-    }
-    internal class frmMain : Form
-    {
-        // Implemente o restante da classe conforme necessário.
-    }
-}
+   }

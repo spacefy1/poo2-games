@@ -1,6 +1,6 @@
 ﻿namespace MatchingGame
 {
-    partial class Menu
+    partial class Final
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             textBox1 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(396, 446);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Iniciar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // textBox1
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(368, 59);
+            textBox1.BackColor = SystemColors.Window;
+            textBox1.Location = new Point(278, 12);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(135, 22);
-            textBox1.TabIndex = 1;
-            textBox1.Text = "Pokemon Game";
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBox1.Size = new Size(209, 23);
+            textBox1.TabIndex = 0;
+            textBox1.Text = "PARABÉNS, VOCE TERMINOU O JOGO";
             // 
-            // Menu
+            // button1
+            // 
+            button1.Location = new Point(334, 263);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Fechar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // Final
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.pokemonBackground;
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(848, 584);
-            Controls.Add(textBox1);
+            ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Name = "Menu";
-            Text = "Menu";
+            Controls.Add(textBox1);
+            Name = "Final";
+            Text = "Final";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
         private TextBox textBox1;
+        private Button button1;
     }
 }
